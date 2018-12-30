@@ -1,4 +1,4 @@
-# Adding tasklist using local storage variable
+# Adding Tasklist Using Local Storage Variable
 Author: Alejandro H. Cartojano Jr.
 Version: 1.0.0
 
