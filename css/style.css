@@ -6,12 +6,16 @@ body{
 }
 h1{
     text-align: center;
+    margin-bottom: 5%;
 }
 .col-sm-6{
-    padding: 0 50px;
+    padding: 0 50px 25px;
 }
 .glyphicon{
     cursor: pointer;
+}
+.input-task-wrap{
+    margin-top: 10px;
 }
 #input-task,
 #filter{
@@ -36,7 +40,7 @@ h1{
 }
 .unstyled-list li{
     padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ccc;
 }
 .unstyled-list#doneTask li{
     border: none;
@@ -52,13 +56,40 @@ h1{
 #archive{
     display: none;
 }
+.archive-wrap,
+.list-wrap{
+    padding: 0 25px 25px;
+    border: 1px solid #333;
+}
+#archive h2,
+#taskList h2{
+    padding: 10px;
+    background: #333;
+    margin: 0;
+    color: #fff !important;
+    text-align: center;
+}
 .message-response{
     display: block;
     margin-top: 10px;
     color: #ccc;
 }
+.btn{
+    background: #333;
+    color: #fff;
+}
 @media(max-width: 767px){
+    body{
+        padding-top: 25px;
+    }
     .col-sm-6{
         padding: 0 15px;
+    }
+    #archive{
+        margin-top: 20px;
+    }
+    #doneTaskBtn,
+    #clearAllTaskBtn{
+        width: 100%;
     }
 }

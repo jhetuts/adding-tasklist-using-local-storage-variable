@@ -4,20 +4,37 @@ const doneTaskBtn = document.getElementById('doneTaskBtn');
 const doneTask = document.getElementById('doneTask');
 const clearAllTaskBtn = document.getElementById('clearAllTaskBtn');
 const filterTask = document.getElementById('filter');
+const filterBtn = document.getElementById('filterBtn');
+const createTaskBtn = document.getElementById('createTaskBtn');
 
 loadEventListener();
 
 function loadEventListener(){
     document.addEventListener('DOMContentLoaded', getTasks);
     inputTask.addEventListener('keypress', addTask);
+    createTaskBtn.addEventListener('click', addTask);
     taskList.addEventListener('click', removeTask);
     doneTaskBtn.addEventListener('click', doneAllTask);
     clearAllTaskBtn.addEventListener('click', doneAllTask);
     filterTask.addEventListener('keyup', filterTasks);
+    filterBtn.addEventListener('click', function(){
+        let val;
+        filterTask.classList.toggle('show');
+
+        if(filterTask.classList.contains('show')){
+            this.innerHTML = `<span class="glyphicon glyphicon-remove pull-right"></span>`;
+        } else {
+            this.innerHTML = `<span>Filter</span>`;
+        }
+
+        val = filterTask.value = "";
+        filterTasks(val);
+    });
 }
 
 function addTask(e){
-    if(e.keyCode === 13){
+    console.log(e);
+    if(e.keyCode === 13 || e.type == 'click'){
         if(inputTask.value == ""){
             alert('Nothing entered!');
         } else {
@@ -50,9 +67,6 @@ function doneAllTask(e){
     if(confirm("Delete all items in this section?")){
         if(e.target.id == "doneTaskBtn"){
             while(taskList.firstChild){
-                // addToArchive(document.querySelector('li').textContent);
-                // itemsToArchive.innerHTML += 
-                // addToArchive(taskList.firstChild);
                 itemsToArchive = taskList.firstChild.textContent;
                 itemsToArchive = itemsToArchive.replace(/^\s+/, '').replace(/\s+$/, '');
                 if(itemsToArchive != ''){
@@ -74,27 +88,29 @@ function doneAllTask(e){
     }
 }
 function filterTasks(e){
-    const text = e.target.value.toLowerCase();
+    const text = filterTask.value;
     let taskLabel = document.querySelector('.message-response');
-    document.querySelectorAll('.task-item').forEach(function(task){
+    let count = 0;
+    let taskitems = document.querySelectorAll('.task-item');
+    taskitems.forEach(function(task){
         const item = task.firstChild.textContent;
-        
-        if(item.toLowerCase().indexOf(text) != -1){
-            taskLabel.textContent = "";
+
+        if(item.toLowerCase().indexOf(text.toLowerCase()) != -1){
             task.style.display = "block";
             checkTaskCount();
         } else {
-            if(task.style.display == "none"){
-                taskLabel.textContent = "No match found!";
-                doneTaskBtn.classList.remove('show');
-            } else {
-                taskLabel.textContent = "";
-            }
             task.style.display = "none";
         }
-
-        
     });
+    taskitems.forEach(function(e){
+        if(e.style.display == "none") count++;
+    });
+
+    if(count == taskList.childElementCount){
+        taskLabel.textContent = "No match found!";
+    } else {
+        taskLabel.textContent = "";
+    }
 }
 function addToArchive(task){
     doneTask.innerHTML += `<li>${task}</li>`;
@@ -110,10 +126,8 @@ function checkTaskCount(){
             label.textContent = "Tasks: ";
         }
         doneTaskBtn.classList.add('show');
-        filterTask.classList.add('show');
     } else {
         doneTaskBtn.classList.remove('show');
-        filterTask.classList.remove('show');
     }
 }
 function checkArchiveCount(){

@@ -14,18 +14,30 @@
         <div class="form-group">
             <h1>To-Do <small>List</small></h1>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" id="taskList">
                     <h2><small>New Task</small></h2>
-                    <input type="text" id="input-task" name="task" value="" placeholder="Create task" class="form-group">
-                    <p class="task-label"><b class="filter-label">Task: </b><input type="text" id="filter" placeholder="Filter tasks"><span class="message-response"></span></p>
-                    <ul class="unstyled-list" id="tasks"></ul>
-                    <button class="btn btn-default" id="doneTaskBtn">All done!</button>
+                    <div class="list-wrap">
+                        <p class="input-task-wrap clearfix">
+                            <input type="text" id="input-task" name="task" value="" placeholder="Create task" class="form-group">
+                            <button id="createTaskBtn" class="btn btn-default">Create</button>
+                        </p>
+                        <p class="task-label clearfix">
+                            <b class="filter-label">Task: </b>
+                            <button id="filterBtn" class="btn btn-default btn-default pull-right">Filter</button>
+                            <input type="text" id="filter" placeholder="Filter tasks">
+                            <span class="message-response"></span>
+                        </p>
+                        <ul class="unstyled-list" id="tasks"></ul>
+                        <button class="btn btn-default" id="doneTaskBtn">All done!</button>
+                    </div>
                 </div>
                 
                 <div class="col-sm-6" id="archive">
                     <h2><small>Archive</small></h2>
-                    <ul class="unstyled-list" id="doneTask"></ul>
-                    <button class="btn btn-default" id="clearAllTaskBtn">Clear archive tasks</button>
+                    <div class="archive-wrap">
+                        <ul class="unstyled-list" id="doneTask"></ul>
+                        <button class="btn btn-default" id="clearAllTaskBtn">Clear archive tasks</button>
+                    </div>
                 </div>
             </div>
         </div>
