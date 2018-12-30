@@ -6,4 +6,4 @@ Description:
 Simple web task-list application using browser localStorage variable.
 
 
-Visit link: jhetuts.github.io/adding-tasklist-using-local-storage-variable
+Visit link: https://jhetuts.github.io/adding-tasklist-using-local-storage-variable
