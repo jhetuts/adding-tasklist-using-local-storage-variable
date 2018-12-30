@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Alejandro H. Cartojano Jr.">
+    <title>Simple Task-list with Local Storage using pure JavaScript</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <h1>To-Do <small>List</small></h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><small>New Task</small></h2>
+                    <input type="text" id="input-task" name="task" value="" placeholder="Create task" class="form-group">
+                    <p class="task-label"><b class="filter-label">Task: </b><input type="text" id="filter" placeholder="Filter tasks"><span class="message-response"></span></p>
+                    <ul class="unstyled-list" id="tasks"></ul>
+                    <button class="btn btn-default" id="doneTaskBtn">All done!</button>
+                </div>
+                
+                <div class="col-sm-6" id="archive">
+                    <h2><small>Archive</small></h2>
+                    <ul class="unstyled-list" id="doneTask"></ul>
+                    <button class="btn btn-default" id="clearAllTaskBtn">Clear archive tasks</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
